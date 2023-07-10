@@ -1,0 +1,84 @@
+﻿@model Domain.DTO.ShoppingCartDto
+
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Shopping cart</h2>
+
+
+@if (Model.TicketsInShoppingCarts.Count() == 0)
+
+{
+    <h2>The shopping cart is empty!</h2>
+}
+else
+{
+    <div class="row">
+        <div class="form-group">
+            <a href="/ShoppingCart/Order" class="btn btn-warning">Order Now</a>
+        </div>
+    </div>
+    <table class="table">
+
+        <thead class="thead-dark">
+        <tr>
+            <th class="col-md-1">
+                #
+            </th>
+            <th class="col">
+                Ticket Name
+            </th>
+            <th class="col">
+                Quantity
+            </th>
+            <th class="col">
+                Price
+            </th>
+            <th class="col"></th>
+        </tr>
+        </thead>
+
+
+        <tbody>
+        @{
+            var i = 1;
+            foreach (var item in Model.TicketsInShoppingCarts)
+            {
+                <tr>
+                    <td>
+                        @(i++)
+                    </td>
+                    <td>
+                        @item.Ticket.TicketName
+                    </td>
+                    <td>
+                        @item.Quantity
+                    </td>
+                    <td>
+                        @item.Ticket.TicketPrice
+                    </td>
+                    <td>
+                        @* <a class="btn btn-danger" href="/ShoppingCart/DeleteFromShoppingCart/@item.Ticket.TicketId">Delete</a> *@
+                        <a class="btn btn-danger" asp-action="DeleteFromShoppingCart" asp-route-id="@item.TicketId">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+
+
+        <tfoot class="thead-dark">
+        <tr>
+            <th>TotalPrice:</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>@Model.TotalPrice</th>
+        </tr>
+
+        </tfoot>
+    </table>
+}

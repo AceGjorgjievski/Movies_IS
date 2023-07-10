@@ -1,0 +1,37 @@
+﻿@model System.Collections.Generic.List<Domain.DomainModels.Ticket>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="container">
+    @for (int i = 0; i < Model.ToList().Count; i++)
+    {
+        var item = Model.ToList()[i];
+
+        if (i % 3 == 0)
+        {
+            @:<div class="row">
+        }
+        
+        <div class="card" style="width: 18rem; margin-right: 15px; margin-bottom: 15px">
+            <img class="card-img-top" src="@item.TicketImage" style="height: 180px; width: 286px " alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@item.TicketName</h5>
+                <p class="card-text">@item.TicketDescription</p>
+                @* <a href="#" class="btn btn-primary">Go somewhere</a> *@
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                @* <a href="/Products/AddToCart?productId=@item.ProductId&cartId=1">Add to cart</a> *@
+                <a asp-action="AddToCart" asp-route-id="@item.Id" class="btn btn-info">Add to cart</a>
+            </div>
+        </div>
+        if (i % 3 == 2)
+        {
+            @:</div>
+        }
+    }
+</div>

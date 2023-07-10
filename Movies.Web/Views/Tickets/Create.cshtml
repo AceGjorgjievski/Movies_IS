@@ -1,0 +1,49 @@
+﻿@model Domain.DomainModels.Ticket
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TicketName" class="control-label"></label>
+                <input asp-for="TicketName" class="form-control" />
+                <span asp-validation-for="TicketName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TicketImage" class="control-label"></label>
+                <input asp-for="TicketImage" class="form-control" />
+                <span asp-validation-for="TicketImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TicketDescription" class="control-label"></label>
+                <input asp-for="TicketDescription" class="form-control" />
+                <span asp-validation-for="TicketDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TicketPrice" class="control-label"></label>
+                <input asp-for="TicketPrice" class="form-control" />
+                <span asp-validation-for="TicketPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TicketRating" class="control-label"></label>
+                <input asp-for="TicketRating" class="form-control" />
+                <span asp-validation-for="TicketRating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

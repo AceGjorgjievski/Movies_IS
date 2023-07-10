@@ -1,0 +1,35 @@
+﻿@model Domain.DTO.TicketInOrderDto
+
+
+@{
+    ViewBag.Title = "Tickets";
+    Layout = "_Layout";
+}
+
+<h2>All Orders</h2>
+
+@if (Model == null)
+{
+    <h2>No tickets available.</h2>
+}
+else
+{
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th class="col-md-1">#</th>
+            <th class="col">Username</th>
+            <th class="col">Number of tickets</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>@Model.Username</td>
+                <td>@Model.Quantity</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+}
+
